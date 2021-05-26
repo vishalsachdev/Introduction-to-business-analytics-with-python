@@ -1,8 +1,8 @@
 # Book settings
-title: Introduction to Business Analytic with Python
+title: Introduction to Business Analytics with Python
 author: Vishal Sachdev
 copyright: "2021" 
-logo: docs/logo.png
+#logo: docs/logo.png
 exclude_patterns: ["cache"]
 
 repository:
