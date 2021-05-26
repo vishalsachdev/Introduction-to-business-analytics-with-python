@@ -10,14 +10,14 @@ repository:
   path_to_book: ""
   branch: main  # Which branch of the repository should be used when creating links
   
-# latex:
-#   latex_documents:
-#     targetname: book.tex
+latex:
+  latex_documents:
+    targetname: book.tex
 
 # # Execution settings
-# execute:
-#   execute_notebooks         : "cache"  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
-#   cache                     : "cache"
+execute:
+  execute_notebooks         : "cache"  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  cache                     : "cache"
 
 # # HTML-specific settings
 # html:
