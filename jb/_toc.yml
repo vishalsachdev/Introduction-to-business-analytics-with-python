@@ -1,6 +1,6 @@
-file: DM1
+file: DM1v2
 sections:
-- file: DM2
-- file: Clustering
-- file: EDA
+- file: DM2v2
+- file: Clusteringv2
+- file: EDAv2
 - file: LASSO
