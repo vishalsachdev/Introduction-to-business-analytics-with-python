@@ -1,4 +1,5 @@
-file: DM1v2
+format: jb-article
+root: DM1v2
 sections:
 - file: DM2v2
 - file: Clusteringv2

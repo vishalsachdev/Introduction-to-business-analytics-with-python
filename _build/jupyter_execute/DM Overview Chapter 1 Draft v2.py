@@ -4,11 +4,11 @@
 # # Data Mining Process Overview
 
 # The process we will be following throughout this course is known as the **Cross-Industry Standard Process for Data Mining (CRISP-DM),** one of the most widely used methods for data mining.
-# 
-# | ![CRISP-DM Process for Data Mining](attachment:CRISP-DM%20Process.png) |
+
+# | ![CRISP_DM_Process.png](attachment:CRISP_DM_Process.png) |
 # |:--:|
 # | <b>Fig. 1 - This is the CRISP-DM Process.</b>|
-# 
+
 # The CRISP-DM process is made up of several parts:
 # 
 # 1. **Data**
@@ -82,8 +82,8 @@
 # **Categorical variables** are used to represent categories or classes. They can be coded as either text or integers. Categorical variables can be either nominal or ordinal, nominal being unordered and ordinal being ordered. An example of a **nominal variable** would be college majors, as there is no inherent ranking between different fields of study. **Ordinal variables**, on the other hand, do have an inherent characteristic order with labels such as low, medium and high. In order for a machine learning algorithm to process categorical data that is text, it needs to be converted to numbers.
 # 
 # Nominal variables would be converted to dummy variables, usually taking a value of either 0 or 1, whereas ordinal variables would be converted to integers which represent their inherent ranking. Let’s look at an example of this using student data.
-# 
-# | ![Nominal vs. Ordinal Variables](attachment:DM%20Overview%20Chapter%201%20-%20Nominal%20vs%20Ordinal%20Variables.png) |
+
+# | ![Nominal_vs_Ordinal_Variables.png](attachment:Nominal_vs_Ordinal_Variables.png) |
 # |:--:|
 # | <b>Fig. 2 - Nominal variables do not have an inherent order, whereas ordinal variables do.</b>|
 
@@ -117,8 +117,8 @@
 # **Outliers**
 # 
 # An **outlier** is an extreme observation, meaning that it is something that is further away from the other data points. These outliers can end up significantly affecting the outcome of the model.
-# 
-# ![Graphs with and without outliers](attachment:Graphs%20with%20and%20without%20outliers.png)
+
+# ![Outlier_Graphs.png](attachment:Outlier_Graphs.png)
 
 # In the figure, we see the independent variable speed on the horizontal axis and the dependent variable distance on the vertical axis. We’ve plotted two graphs: one with outliers (left) and one without (right). We see that the majority of our data points are on the bottom left of the graph, with only a few points at the upper right hand corner (graph on the left).  A simple regression line is fit, and we observe the slope of this graph is pretty steep. 
 # 
