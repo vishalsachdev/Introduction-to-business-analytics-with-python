@@ -32,3 +32,5 @@ execute:
 #   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
 #   baseurl                   : "https://github.com/vishalsachdev/Introduction-to-#business-analytics-with-python"  # The base URL where your book will be hosted. Used for #creating image previews and social links. e.g.: https://mypage.com/mybook/
 
+
+theme: jekyll-theme-slate
