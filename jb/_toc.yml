@@ -1,6 +1,8 @@
-file: DM1v2
+file: Clustering
 sections:
-- file: DM2v2
 - file: Clusteringv2
+- file: DM1v2
+- file: DM2v2
 - file: EDAv2
 - file: LASSO
+- file: MLR
