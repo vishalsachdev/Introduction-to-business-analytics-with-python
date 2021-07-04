@@ -5,3 +5,4 @@ sections:
 - file: Clusteringv2
 - file: EDAv2
 - file: LASSO
+- file: MLR
