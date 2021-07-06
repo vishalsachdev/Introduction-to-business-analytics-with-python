@@ -1,8 +1,7 @@
-format: jb-article
-root: DM1v2
+file: DM Overview Chapter 2 Draft v2
 sections:
-- file: DM2v2
-- file: Clusteringv2
-- file: EDAv2
+- file: EDA & Data Viz. Chapter 3 Draft v2
 - file: LASSO
+- file: Logistic Regression Chapter
 - file: MLR
+- file: Similarity & Clustering Chapter 4 Draft v2

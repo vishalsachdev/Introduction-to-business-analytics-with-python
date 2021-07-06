@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDA and Data Visualization &#8212; Introduction to Business Analytics with Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LASSO Regression" href="LASSO.html" />
+    <link rel="prev" title="Data Mining Overview (Cont.)" href="DM%20Overview%20Chapter%202%20Draft%20v2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Business Analytics with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DM%20Overview%20Chapter%202%20Draft%20v2.html">
+   Data Mining Overview (Cont.)
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   EDA and Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LASSO.html">
+   LASSO Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Logistic%20Regression%20Chapter.html">
+   Logistic Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLR.html">
+   Multiple Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Similarity%20%26%20Clustering%20Chapter%204%20Draft%20v2.html">
+   Similarity &amp; Clustering
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/EDA & Data Viz. Chapter 3 Draft v2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vishalsachdev/Introduction-to-business-analytics-with-python/main?urlpath=tree/EDA & Data Viz. Chapter 3 Draft v2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-charts">
+   Basic Charts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-charts">
+   Special charts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="eda-and-data-visualization">
+<h1>EDA and Data Visualization<a class="headerlink" href="#eda-and-data-visualization" title="Permalink to this headline">¶</a></h1>
+<p>Exploratory data analysis is comprised of three parts:</p>
+<p><strong>Data Inspection:</strong></p>
+<p>This will start by looking at the raw data. This can be done by using functions such as head(), describe(), info(), etc.</p>
+<p>The head() function will print the first n rows of the dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The tail() function is similar to the head() function; it will print the last n rows of the dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The sample function randomly selects n rows to display, where n is a specified argument</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The describe() function computes summary statistics of your data, i.e. mean, count, median, quartile 1 value, quartile 3 value, and more.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The info() function prints a summary of your dataset. Specifically, it identifies the number of non-null observations per variable as well as the type of each variable.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Data Exploration:</strong></p>
+<p>Data exploration calls for exploring further relationships between variables. Examples of ways to explore these relationships are by cross-tabulation (which is used for analysis of categorical data) and dimension reduction (which is used to reduce the amount of unnecessary data in your model), both of which improve accuracy and speed up computing.</p>
+<p><strong>Data Visualization:</strong></p>
+<p>Data visualization calls for visualizing relationships between variables. In this chapter, we will review some common data visualization methods.</p>
+<div class="section" id="basic-charts">
+<h2>Basic Charts<a class="headerlink" href="#basic-charts" title="Permalink to this headline">¶</a></h2>
+<p>These charts will display two variables (or columns) of data.</p>
+<p>Ex: Bar charts, scatter plots, line graphs</p>
+<ul class="simple">
+<li><p><strong>Bar Charts</strong> - compare a <strong>single statistic</strong> across groups</p>
+<ul>
+<li><p>Horizontal (x-axis): categorical variable</p></li>
+<li><p>Vertical (y-axis): “statistic” of a numerical variable (ex. count, mean, median, etc.)</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">random_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;categorical_variable_of_interest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">categorical_variable_of_interest</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;label_here&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>(Bar chart example)</strong></p>
+<ul class="simple">
+<li><p><strong>Scatter plot</strong> - comparing two <strong>numerical variables</strong></p>
+<ul>
+<li><p>Horizontal (x-axis): numerical variable</p></li>
+<li><p>Vertical (y-axis): also a numerical variable</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;variable_1&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;variable_2&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>(Scatter plot example)</strong></p>
+<ul class="simple">
+<li><p><strong>Line graph</strong> - display <strong>numerical variable</strong> (or statistic) over <strong>time</strong></p>
+<ul>
+<li><p>Horizontal (x-axis): date/time variable</p></li>
+<li><p>Vertical (y-axis): numerical variable</p></li>
+</ul>
+</li>
+</ul>
+<p>First, add Date/Time variable</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">random_df</span><span class="o">.</span><span class="n">dteday</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%Y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, set Date column as index. This is a time series, not a data frame.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">random_df</span><span class="o">.</span><span class="n">cnt</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">random_df</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Lastly, plot your Line Graph.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_ts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">],</span> 
+               <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+               <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x_label_here&#39;</span><span class="p">)</span>  <span class="c1"># set x-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y_label_here&#39;</span><span class="p">)</span>  <span class="c1"># set y-axis label</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>(Line graph example)</strong></p>
+<p><strong>Distribution Plots</strong></p>
+<p>Display distribution of a single numerical variable</p>
+<p>Ex. Histograms, Box plots</p>
+<ul class="simple">
+<li><p><strong>Histogram</strong> - represents <strong>frequency</strong> of values with vertical bars</p>
+<ul>
+<li><p>Horizontal (x-axis): numerical variable, potentially “binned”</p></li>
+<li><p>Vertical (y-axis): frequency for that same variable</p></li>
+<li><p>Note: For continuous data or data with many possible values, <strong>group values into bins</strong> or a series of ranges (ex. One bin contains all values between 20 and 40)</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">random_df</span><span class="o">.</span><span class="n">numerical_variable_of_interest</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Variable Distribution&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x_label&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>(Histogram Example)</strong></p>
+<ul class="simple">
+<li><p><strong>Box plots</strong> - Display <strong>range</strong> and partial distribution of a numerical value</p>
+<ul>
+<li><p>Quartile 1: 25% of the data below/to the left of this point</p></li>
+<li><p>Median: 50% of the data below/to the left of this point; “Middle” value of a variable</p></li>
+<li><p>Quartile 3: 75% of the data below/to the left of this point</p></li>
+<li><p>Interquartile Range (IQR): IQR = Q3 - Q1; measure of dispersion</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;numerical_variable&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y_label&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>(Basic box plot example)</strong></p>
+<ul class="simple">
+<li><p>Box plot for comparison - Often used to compare distribution across groups (against categorical variables)</p>
+<ul>
+<li><p>Horizontal (x-axis): categorical variable</p></li>
+<li><p>Vertical (y-axis): numerical variable</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">random_df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;numerical_variable&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;categorical_variable&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y_label&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># Suppress the overall title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>(comparison box plots examples)</strong></p>
+</div>
+<div class="section" id="special-charts">
+<h2>Special charts<a class="headerlink" href="#special-charts" title="Permalink to this headline">¶</a></h2>
+<p><strong>Correlation table:</strong></p>
+<p>Correlation tables are a (relatively) concise way to display the correlation between different variables in our dataframe. However, they show a lot of information and can be difficult to digest. We solve this by using a heat map.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(Example of correlation table here)</p>
+<p><strong>Correlation heatmap:</strong></p>
+<p>Below, we use the correlation table defined above, but we add a heatmap. Let’s breakdown the code:</p>
+<ul class="simple">
+<li><p>sns: using the seaborn library</p></li>
+<li><p>heatmap: call heatmap function</p>
+<ul>
+<li><p>corr: first positional argument, the correlation table</p></li>
+<li><p>annot: if True, write data values in each cell</p></li>
+<li><p>fmt: string formatting code for each value, # indicates decimal places</p></li>
+<li><p>cmap: colormap to use, RdBu is another</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">random_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span> <span class="c1"># create correlation table</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.1f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(Example of heatmap here)</p>
+<p><strong>Missing Value Analysis:</strong></p>
+<p>We can generate a bar chart to quickly see which variables are missing values.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msno</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">random_df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;deepskyblue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(Example of graph here)</p>
+<p><strong>Pivot Tables:</strong></p>
+<p>A pivot table is used to summarize a large data set by grouping data together via multiple columns. This can be done using the pivot_table function, first taking one argument which will be the aggregated column. The index column then takes the row indices, specifying how the table will be grouped and the column arguments specifies the columns that are displayed in the table. Finally, the aggfunc argument specifies what functions should be computed and displayed, with average being the default.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;totall&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References:<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary:<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<p><strong>Data Inspection:</strong></p>
+<p><strong>Data Exploration:</strong></p>
+<p><strong>Data Visualization:</strong></p>
+<p><strong>Bar Charts:</strong></p>
+<p><strong>Scatter Plots:</strong></p>
+<p><strong>Line Graph:</strong></p>
+<p><strong>Distribution Plots:</strong></p>
+<p><strong>Histograms:</strong></p>
+<p><strong>Box Plots:</strong></p>
+<p><strong>Correlation Tables:</strong></p>
+<p><strong>Correlation Heatmap:</strong></p>
+<p><strong>Missing Value Analysis:</strong></p>
+<p><strong>Pivot Tables:</strong></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="DM%20Overview%20Chapter%202%20Draft%20v2.html" title="previous page">Data Mining Overview (Cont.)</a>
+    <a class='right-next' id="next-link" href="LASSO.html" title="next page">LASSO Regression</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Vishal Sachdev<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
