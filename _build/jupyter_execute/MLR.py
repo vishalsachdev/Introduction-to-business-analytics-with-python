@@ -19,24 +19,28 @@ import matplotlib.pyplot as plt
 from dmba import regressionSummary
 
 
-# #Collapse markdown syntax
-# <details>
-# <summary>Click to expand</summary>
-# 
-# Message
-# 
-# </details>
-
 # ## Code
 
 # In[2]:
+
+
+print("hello")
+
+
+# ```{toggle}
+# ```{code-block}
+# print('hello')
+# ```
+# 
+
+# In[3]:
 
 
 #Import data
 df = pd.read_csv("./data/ToyotaCorolla.csv")
 
 
-# In[3]:
+# In[4]:
 
 
 #Creating X and Y
@@ -50,7 +54,7 @@ X = pd.get_dummies(X,drop_first = False)
 train_x,test_x, train_y, test_y = train_test_split(X,Y, test_size = 0.4, random_state = 2012)
 
 
-# In[4]:
+# In[5]:
 
 
 car_lm = LinearRegression()
@@ -61,7 +65,7 @@ print('intercept ', car_lm.intercept_)
 print(pd.DataFrame({'Predictor': X.columns, 'coefficient': car_lm.coef_}))
 
 
-# In[5]:
+# In[6]:
 
 
 regressionSummary(train_y, car_lm.predict(train_x))
@@ -69,7 +73,7 @@ print()
 regressionSummary(test_y, car_lm.predict(test_x))
 
 
-# In[6]:
+# In[7]:
 
 
 car_lm_pred = car_lm.predict(test_x) # Which data set are we calculating predictions
@@ -77,7 +81,7 @@ result = pd.DataFrame({'Predicted': car_lm_pred, 'Actual': test_y,'Error': test_
 result.head(20)
 
 
-# In[7]:
+# In[8]:
 
 
 #Plotting Actual Vs Predicted
