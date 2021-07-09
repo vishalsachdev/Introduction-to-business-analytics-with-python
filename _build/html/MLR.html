@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Linear Regression &#8212; Introduction to Business Analytics with Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Similarity &amp; Clustering" href="Similarity%20%26%20Clustering%20Chapter%204%20Draft%20v2.html" />
+    <link rel="prev" title="Logistic Regression" href="Logistic%20Regression%20Chapter.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Business Analytics with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DM%20Overview%20Chapter%202%20Draft%20v2.html">
+   Data Mining Overview (Cont.)
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EDA%20%26%20Data%20Viz.%20Chapter%203%20Draft%20v2.html">
+   EDA and Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LASSO.html">
+   LASSO Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Logistic%20Regression%20Chapter.html">
+   Logistic Regression
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Multiple Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Similarity%20%26%20Clustering%20Chapter%204%20Draft%20v2.html">
+   Similarity &amp; Clustering
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/MLR.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vishalsachdev/Introduction-to-business-analytics-with-python/main?urlpath=lab/tree/jb/MLR.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-required-packages">
+   Import required packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapter-introduction">
+   Chapter Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-mlr">
+     What is MLR
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assumptions-about-mlr">
+   Assumptions about MLR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mlr-prediction">
+   MLR + Prediction
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="multiple-linear-regression">
+<h1>Multiple Linear Regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="import-required-packages">
+<h2>Import required packages<a class="headerlink" href="#import-required-packages" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">dmba</span> <span class="kn">import</span> <span class="n">regressionSummary</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_{&quot;tags&quot;:[&quot;hide-output&quot;]} docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="toggle docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./data/ToyotaCorolla.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Creating X and Y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Price&#39;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Price</span>
+
+<span class="c1">#Encoding variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">drop_first</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">#Partition</span>
+<span class="n">train_x</span><span class="p">,</span><span class="n">test_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">2012</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_lm</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="n">car_lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;intercept &#39;</span><span class="p">,</span> <span class="n">car_lm</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Predictor&#39;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;coefficient&#39;</span><span class="p">:</span> <span class="n">car_lm</span><span class="o">.</span><span class="n">coef_</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intercept  -356281157835.0807
+        Predictor   coefficient
+0              Id -1.044232e+00
+1       Age_08_04  1.480982e+07
+2       Mfg_Month  1.480982e+07
+3        Mfg_Year  1.777186e+08
+4              KM -1.938983e-02
+..            ...           ...
+415     Color_Red  2.436955e+02
+416  Color_Silver  3.228589e+02
+417  Color_Violet -5.462506e+02
+418   Color_White  3.329674e+02
+419  Color_Yellow -3.430901e+02
+
+[420 rows x 2 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regressionSummary</span><span class="p">(</span><span class="n">train_y</span><span class="p">,</span> <span class="n">car_lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">regressionSummary</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">car_lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regression statistics
+
+                      Mean Error (ME) : -0.0000
+       Root Mean Squared Error (RMSE) : 637.6398
+            Mean Absolute Error (MAE) : 442.2569
+          Mean Percentage Error (MPE) : -0.4488
+Mean Absolute Percentage Error (MAPE) : 4.6432
+
+
+Regression statistics
+
+                      Mean Error (ME) : -541.1156
+       Root Mean Squared Error (RMSE) : 5093.9109
+            Mean Absolute Error (MAE) : 1863.5874
+          Mean Percentage Error (MPE) : -6.1678
+Mean Absolute Percentage Error (MAPE) : 17.7818
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_lm_pred</span> <span class="o">=</span> <span class="n">car_lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span> <span class="c1"># Which data set are we calculating predictions</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">car_lm_pred</span><span class="p">,</span> <span class="s1">&#39;Actual&#39;</span><span class="p">:</span> <span class="n">test_y</span><span class="p">,</span><span class="s1">&#39;Error&#39;</span><span class="p">:</span> <span class="n">test_y</span> <span class="o">-</span> <span class="n">car_lm_pred</span><span class="p">})</span>
+<span class="n">result</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Predicted</th>
+      <th>Actual</th>
+      <th>Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1104</th>
+      <td>7377.593628</td>
+      <td>7250</td>
+      <td>-127.593628</td>
+    </tr>
+    <tr>
+      <th>309</th>
+      <td>12592.718018</td>
+      <td>12450</td>
+      <td>-142.718018</td>
+    </tr>
+    <tr>
+      <th>1201</th>
+      <td>7396.279663</td>
+      <td>7850</td>
+      <td>453.720337</td>
+    </tr>
+    <tr>
+      <th>1169</th>
+      <td>8592.765747</td>
+      <td>9250</td>
+      <td>657.234253</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>16091.422607</td>
+      <td>16250</td>
+      <td>158.577393</td>
+    </tr>
+    <tr>
+      <th>916</th>
+      <td>8437.802612</td>
+      <td>7950</td>
+      <td>-487.802612</td>
+    </tr>
+    <tr>
+      <th>600</th>
+      <td>9217.399963</td>
+      <td>11250</td>
+      <td>2032.600037</td>
+    </tr>
+    <tr>
+      <th>266</th>
+      <td>12990.992126</td>
+      <td>12495</td>
+      <td>-495.992126</td>
+    </tr>
+    <tr>
+      <th>863</th>
+      <td>8935.317749</td>
+      <td>8200</td>
+      <td>-735.317749</td>
+    </tr>
+    <tr>
+      <th>940</th>
+      <td>10643.601868</td>
+      <td>9450</td>
+      <td>-1193.601868</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>18834.861267</td>
+      <td>19600</td>
+      <td>765.138733</td>
+    </tr>
+    <tr>
+      <th>1125</th>
+      <td>6962.343628</td>
+      <td>6500</td>
+      <td>-462.343628</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>13422.181519</td>
+      <td>16350</td>
+      <td>2927.818481</td>
+    </tr>
+    <tr>
+      <th>1238</th>
+      <td>7616.496460</td>
+      <td>7750</td>
+      <td>133.503540</td>
+    </tr>
+    <tr>
+      <th>859</th>
+      <td>8883.018921</td>
+      <td>8750</td>
+      <td>-133.018921</td>
+    </tr>
+    <tr>
+      <th>1339</th>
+      <td>8347.912292</td>
+      <td>9000</td>
+      <td>652.087708</td>
+    </tr>
+    <tr>
+      <th>1432</th>
+      <td>7938.191650</td>
+      <td>10845</td>
+      <td>2906.808350</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>12215.318909</td>
+      <td>11950</td>
+      <td>-265.318909</td>
+    </tr>
+    <tr>
+      <th>549</th>
+      <td>11929.766907</td>
+      <td>12500</td>
+      <td>570.233093</td>
+    </tr>
+    <tr>
+      <th>969</th>
+      <td>9669.761658</td>
+      <td>10500</td>
+      <td>830.238342</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_&quot;hide-output&quot; tag_] tag_} docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting Actual Vs Predicted</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">Predicted</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">Actual</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Response&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual Values&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">5000</span><span class="p">,</span><span class="mi">30000</span><span class="p">],[</span><span class="mi">5000</span><span class="p">,</span><span class="mi">30000</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11c3a8040&gt;]
+</pre></div>
+</div>
+<img alt="_images/MLR_10_1.png" src="_images/MLR_10_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="chapter-introduction">
+<h2>Chapter Introduction<a class="headerlink" href="#chapter-introduction" title="Permalink to this headline">¶</a></h2>
+<p>In the previous chapter, we discussed similarity and clustering as a data pre-processing step. It is an important organizational step that helps analyze the data as a whole before moving into regression analysis and identifying the direct impact of certain variables on others. In this chapter, we’ll go over the basics of that regression analysis, focusing on one of the most popular models for making predictions when we have a numerical outcome variable, Multiple Linear Regression (MLR).</p>
+<p>In this chapter, we’ll go over:</p>
+<ol class="simple">
+<li><p>What is MLR?</p></li>
+<li><p>Assumptions behind MLR</p></li>
+<li><p>Steps to MLR</p></li>
+<li><p>MLR + Predictions</p></li>
+</ol>
+<div class="section" id="what-is-mlr">
+<h3>What is MLR<a class="headerlink" href="#what-is-mlr" title="Permalink to this headline">¶</a></h3>
+<p>Recall from Chapter 2 that data mining methods fall under two main categories: supervised learning and unsupervised learning. These learning methods are classified based on the presence and type of outcome variable; in supervised learning, we predict a previously determined outcome variable, and in unsupervised learning, we identify patterns within the data. Under unsupervised learning, the main method we’ll cover in this class is clustering, and under supervised learning, the two branches we’ll cover are regression and classification.</p>
+<p>The goal of Regression is to predict numerical outcomes and can be used to predict values in various situations. For example, predicting the amount spent on a fraudulent transaction would be a regression problem.</p>
+<p>Regression can be used for explanatory or predictive modeling.</p>
+<p>Explanatory Modeling - Creating a model that fits well with existing data (the data on which it was trained)
+Uses the entire data set to maximize information and focus on the coefficients
+Represents the relationship between existing dependent and independent variables, not predicting new values for dependent variables</p>
+<p>Predictive Modeling – Creating a model that has high predictive accuracy on new data
+Partitions to assess predictive performance and avoids overfitting with the focus being on predictions
+Accurately predicts new values for dependent variables, not descriptions of associations between existing dependent and independent variables</p>
+<p>The goal of Classification is to predict categorical outcomes, such as whether or not an outcome will be true or the probability that an outcome will occur. Within classification, there are two types of outcomes: class membership and propensity. Class membership refers to the categorical variable itself, while propensity refers to the probability of the class membership. For example, predicting whether or not a transaction is fraudulent would be a classification problem.</p>
+<p>Here are some more examples:</p>
+<p>How much will a house sell for? - Regression (numerical outcome)</p>
+<p>Will a student pass a test or not? - Classification (class membership)</p>
+<p>What is the probability of a certain student passing a class? - Classification (propensity)</p>
+<p>One method of predicting numerical outcomes under regression is Linear Regression, which examines the relationship between a dependent variable (also referred to as the outcome variable, response, or target) and independent variable(s) (also referred to as the predictor(s), input variable(s), regressor(s), or covariate(s)) assuming a linear relationship. Simple Linear Regression (SLR) examines a single independent variable, while Multiple Linear Regression (MLR) examines multiple independent variables.</p>
+<p>The equation below represents a linear relationship between multiple predictors and the outcome. We assume that this is the true relationship between the predictor variables and outcome variable. We will go over some examples and explanations to the different parts of this equation in the rest of this chapter.</p>
+<p>y = β0 + β1x1 + β2x2 +⋯+ βpxp + ϵ</p>
+<p>y: outcome variable
+x1, …, xp: predictor variables wherewith p is the= total number of predictors
+β0: intercept
+β1, …, βp: coefficients with p = total number of predictors
+ϵ: error (factors affecting y other than predictors)</p>
+<p>Let’s walk through an example of predicting numerical outcomes.</p>
+<p>You work at a Toyota dealership which buys back used cars from customers purchasing new cars. To make a profit, the dealership needs to predict the price that the used car will sell for.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Price</p></td>
+<td><p>Offer price in Euros</p></td>
+</tr>
+<tr class="row-odd"><td><p>Age</p></td>
+<td><p>Age in months as of August 2004</p></td>
+</tr>
+<tr class="row-even"><td><p>Kilometers</p></td>
+<td><p>Accumulated Kilometers on odometer</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fuel type</p></td>
+<td><p>Fuel type (Petrol, Diesel, CNG)</p></td>
+</tr>
+<tr class="row-even"><td><p>HP</p></td>
+<td><p>Horsepower</p></td>
+</tr>
+<tr class="row-odd"><td><p>Metallic</p></td>
+<td><p>Metallic color (Yes = 1, No= 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>Automatic</p></td>
+<td><p>Automatic (Yes = 1, No = 0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CC</p></td>
+<td><p>Cylinder volume in cubic centimeters</p></td>
+</tr>
+<tr class="row-even"><td><p>Doors</p></td>
+<td><p>Number of doors</p></td>
+</tr>
+<tr class="row-odd"><td><p>QuartTax</p></td>
+<td><p>Quarterly road tax in Euros</p></td>
+</tr>
+<tr class="row-even"><td><p>Weight</p></td>
+<td><p>Weight in Kilograms</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<p>In this example, a relationship between several variables and price is already given. Later in this chapter, we’ll explore how to get these coefficients through MLR.</p>
+<p>Price = 3 - 0.5 Age + 2 Automatic_binary + 3 PowerWindow_binary + 0.4 WarrantyLeft</p>
+<p>We can interpret these variables quantitatively and qualitatively. A quantitative interpretation of this equation would state a 1 unit increase in the age of a car reduces price by 0.5 units of price whereas a qualitative interpretation of this equation would simply state an increase in age will reduce the price of the car (without specifying numerical values.)</p>
+<p>We will use predictors (x1, …, xp) to predict (instead of explain) outcome (y).</p>
+<p>For example:</p>
+<p>Use house characteristics to predict selling price</p>
+<p>Use advertising expenditures to predict sales</p>
+<p>Use product demand to predict valuation</p>
+</div>
+</div>
+<div class="section" id="assumptions-about-mlr">
+<h2>Assumptions about MLR<a class="headerlink" href="#assumptions-about-mlr" title="Permalink to this headline">¶</a></h2>
+<p>When dealing with multiple linear regression, we must always assume that there is a linear relationship between multiple predictors and the outcome. If a linear relationship is not present, a non-linear regression model must be utilized.</p>
+<p>We must also assume independent variables are not highly correlated to one another; this creates the issue of multicollinearity.</p>
+<p>When converting categorical variables to dummy variables, we must drop one dummy variable to avoid multicollinearity. For example, continuing on from the Toyota dealership example, if we were to dummy code the variable Fuel, we would get Fuel_Petrol, Fuel_Diesel, and Fuel_CNG. If Fuel_Patrol and Fuel_Diesel are both 0, then the car in question must run on CNG. Including the variable Fuel_CNG in our model means that any one of the Fuel dummy variables can be determined by the remaining two dummy variables.This is an example of perfect multicollinearity. Therefore, as shownyou see in the image above, Fuel_CNG must be dropped from the model. It doesn’t matter which dummy variable is dropped, as long as one of them is.</p>
+<p>By fitting the model to our data, we will estimate the coefficients to the predictor variables and use those to predict outcome values. We can then use those predicted outcome values to calculate residuals (also called errors). Estimates will remain unbiased if the mean of the error term is 0, and if the variance of the error term is constant, or homoskedastic.</p>
+</div>
+<div class="section" id="mlr-prediction">
+<h2>MLR + Prediction<a class="headerlink" href="#mlr-prediction" title="Permalink to this headline">¶</a></h2>
+<p>In data mining, predictive accuracy methods indicate high accuracy when applied to new data sets, not existing ones. There are 5 common predictive accuracy methods we will discuss in this chapter. These include Mean Error (ME), Root-Mean-Squared Error (RMSE), Mean Absolute Error (MAE), Mean Percentage Error (MPE), and Mean Absolute Percentage Error (MAPE).</p>
+<p>Mean Absolute Error (MAE): This measure gives the absolute magnitude of the distance between your prediction and the outcome variable. For example, if your MAE is 12, your predictions are on average 12 units off from the actual value.</p>
+<p>Mean Error (ME): This measure gives an indication of whether predictions overpredict or underpredict the outcome variable on average. It is similar to MAE, but does not take the absolute value of the error. A small mean error does NOT indicate good performance, but tells us whether the model consistently over- or underestimates outcomes.</p>
+<p>Root-Mean-Squared Error (RMSE): This measure tells you how concentrated the data is around the line of best fit determined by the regression method. It is similar to the standard error of estimate in linear regression, but computed on the validation data.</p>
+<p>Mean Absolute Percentage Error (MAPE): This measure gives the percentage score of how predictions deviate from the actual values on average.</p>
+<p>Mean Percentage Error (MPE): This measure is similar to MAPE, but does not take the absolute value of the error.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Logistic%20Regression%20Chapter.html" title="previous page">Logistic Regression</a>
+    <a class='right-next' id="next-link" href="Similarity%20%26%20Clustering%20Chapter%204%20Draft%20v2.html" title="next page">Similarity &amp; Clustering</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Vishal Sachdev<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

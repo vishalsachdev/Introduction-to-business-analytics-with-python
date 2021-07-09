@@ -3,7 +3,7 @@
 
 # # LASSO Regression
 
-# In[7]:
+# In[1]:
 
 
 import pandas as pd
@@ -53,7 +53,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 # Read the data using the ```read_csv``` function from pandas package and save it as the dataframe `car_df`. The data is called `'ToyotaCorolla.csv'`. Use the `.head()` method to make sure the dataframe has been created correctly.
 
-# In[8]:
+# In[2]:
 
 
 car_df = pd.read_csv('../jb/data/ToyotaCorolla.csv')
@@ -62,7 +62,7 @@ car_df.head()
 
 # We use the map function to iterate through a list of values (in this case, the column names, and apply a function to each item in the list. In this case, we want make each item lowercase.)
 
-# In[9]:
+# In[3]:
 
 
 car_df.columns = map(str.lower, car_df.columns)
@@ -71,7 +71,7 @@ car_df.columns
 
 # We can see that `id` and `model` aren't useful to include, as `id` provides a unique but meaningless number for each row, and model is not important, as these are all Toyota Corollas. Let's drop those. 
 
-# In[10]:
+# In[4]:
 
 
 car_df=car_df.drop(columns =['model','id']) 
@@ -84,7 +84,7 @@ car_df.columns
 
 # We use `pd.get_dummies`  to dummy-code all the variables. Each categorical variable will generate two or more dummy variables. Dropping the first dummy variable  (using the argument `drop_first`) ensures we won't have problems with perfect multicollinearity.
 
-# In[11]:
+# In[5]:
 
 
 car_df = pd.get_dummies(car_df, drop_first=True)
@@ -97,7 +97,7 @@ car_df.columns
 # 
 # How would I know from these new dummy variables that a car is Beige?
 
-# In[12]:
+# In[6]:
 
 
 car_df[['fuel_type_Diesel', 'fuel_type_Petrol', 'color_Black', 'color_Blue', 'color_Green',
@@ -115,7 +115,7 @@ car_df[['fuel_type_Diesel', 'fuel_type_Petrol', 'color_Black', 'color_Blue', 'co
 # 
 # We'll then create the training and test sets, using our `X` and `y` objects.
 
-# In[13]:
+# In[7]:
 
 
 outcome = 'price'
@@ -130,7 +130,7 @@ train_X
 
 # Remember that in a LASSO model, we penalize large coefficient estimates. The magnitude of a coefficient estimate can vary depending on the units of the variable. We address this by standardizing our data.
 
-# In[14]:
+# In[8]:
 
 
 #Standardization
@@ -150,7 +150,7 @@ valid_X=scaler.transform(valid_X)
 # 3. Fit the model using the training data (this finds the best coefficients AKA the $\hat{\beta}_i$s)
 # 4. Use the results (that is, use the coefficient estimates) from the fitted model to predict the outcome (price) for the validation data
 
-# In[15]:
+# In[9]:
 
 
 # Step 1: Set lambda
@@ -166,13 +166,13 @@ car_lasso.fit(train_X, train_y)
 car_lasso_predict = car_lasso.predict(valid_X)
 
 
-# In[16]:
+# In[10]:
 
 
 regressionSummary(valid_y, car_lasso_predict)
 
 
-# In[17]:
+# In[11]:
 
 
 # Estimated coefficients
@@ -193,7 +193,7 @@ car_lasso.coef_
 # 
 # For whatever list I create, I save the length of the list (that is, the number of $\lambda$ in my list) as `l_num`.
 
-# In[18]:
+# In[12]:
 
 
 # Define lambda to be used in LASS0 
@@ -207,7 +207,7 @@ l_num = len(lambdas)
 
 # Next, create an empty array (sort of a fancy list) to hold the hold the prediction accuracy measure for each fitted model. Remember, we'll have the same number of models as we have $\lambda$s in our list above, so we create an array that is the same length. We put in zeros as placeholders.
 
-# In[19]:
+# In[13]:
 
 
 # initilize a vector to hold values of RMSE
@@ -218,7 +218,7 @@ valid_RMSE = np.zeros(l_num)
 
 # Okay, finally ready to put the for loop code together with the LASSO code! Let's do it.
 
-# In[20]:
+# In[14]:
 
 
 # enumerate through lambdas with index and val
