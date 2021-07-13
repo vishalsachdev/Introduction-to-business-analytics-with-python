@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Similarity &amp; Clustering &#8212; Introduction to Business Analytics with Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="EDA and Data Visualization" href="EDAv2.html" />
+    <link rel="prev" title="Data Mining Overview (Cont.)" href="DM2v2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Business Analytics with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DM1v2.html">
+   Data Mining Process Overview
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DM2v2.html">
+   Data Mining Overview (Cont.)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Similarity &amp; Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EDAv2.html">
+   EDA and Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LASSO.html">
+   LASSO Regression
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Clusteringv2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vishalsachdev/Introduction-to-business-analytics-with-python/main?urlpath=tree/Clusteringv2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-clustering">
+   What is Clustering?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rescaling-data">
+   Rescaling Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering-algorithm">
+   Clustering Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strengths-weaknesses-of-k-means">
+   Strengths + Weaknesses of k-means:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="similarity-clustering">
+<h1>Similarity &amp; Clustering<a class="headerlink" href="#similarity-clustering" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-clustering">
+<h2>What is Clustering?<a class="headerlink" href="#what-is-clustering" title="Permalink to this headline">¶</a></h2>
+<p>A cluster is a collection of data objects or a natural grouping of any sort.</p>
+<ul class="simple">
+<li><p>Data objects are <strong>similar</strong> to one another within the same cluster</p></li>
+<li><p>Data objects are <strong>dissimilar</strong> to the objects in other clusters</p></li>
+</ul>
+<p>Clustering is a part of unsupervised learning and often part of EDA (exploratory data analysis) as an approach to analyze data sets to summarize their main characteristics.  This is more specifically known as <strong>unsupervised segmentation</strong> as they are creating segments without predefined targets.</p>
+<p><strong>What are some applications of clustering?</strong></p>
+<p>Clustering has two broad categories of application. It can be a <strong>stand-alone tool</strong> to get insight into underlying data by grouping related data together, or it can be a <strong>data pre-processing step</strong> before other algorithms are run.</p>
+<p>A good clustering method produces high-quality clusters. A high-quality cluster would contain data objects showing high similarity within a cluster and low similarity across clusters. The quality of clusters depends on the metric at which we define similarity, how clustering was implemented, and the ability of the clusters to discover hidden patterns.</p>
+<p>A simplified scientific approach to clustering would first require you to quantify object characteristics with numerical values. Next, calculate the distance between objects based on characteristics, utilizing a “similarity” metric that can be used to compare variables.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><img alt="Similary + Clustering Object Characteristics" src="attachment:Similarity%20+%20Clustering%20Chapter%20Measurement%20of%20Object%20Characteristics%20.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><b>Fig. 1 - Object Characteristics</b></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Euclidean distance</strong> is a commonly used metric to measure distance between clusters. It can be calculated by utilizing the following equation: $<span class="math notranslate nohighlight">\( d(x,y) = \sqrt \Sigma(x_{i} - y_{i})^{2} \)</span>$</p>
+<p>Euclidean distance is a special case of <strong>Minkowski Distance.</strong></p>
+<p>Another case of Minkowski Distance is <strong>Manhattan Distance.</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><img alt="Similarity + Clustering Euclidean Distance + Manhattan Distance" src="attachment:Similarity%20+%20Clustering%20Euclidean%20Distance%20+%20Manhattan%20Distance.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><b>Fig. 2</b></p></td>
+</tr>
+</tbody>
+</table>
+<p>Assume that each side of the square is <strong>one unit</strong>.</p>
+<p>The distance between A and B is as follows:</p>
+<p>(Assume A at origin, and B at (6,6))</p>
+<p><strong>Euclidean Distance</strong>: $<span class="math notranslate nohighlight">\( \sqrt (6^{2} + 6^{2}) \approx 8.485 \)</span>$</p>
+<p><strong>Manhattan Distance</strong>: $<span class="math notranslate nohighlight">\( | 0 - 6 | + | 0 - 6 | = 12 \)</span>$</p>
+</div>
+<div class="section" id="rescaling-data">
+<h2>Rescaling Data<a class="headerlink" href="#rescaling-data" title="Permalink to this headline">¶</a></h2>
+<p><strong>Standardize</strong>: subtract mean and divide by the standard deviation.</p>
+<div class="math notranslate nohighlight">
+\[ x_{new} = \frac{x - \mu}{\sigma} \]</div>
+<p>One way we can standardize data in Python is by using the StandardScaler() function.</p>
+<p>After partitioning your data set into a train and test set as discussed in Chapter X, the StandardScaler () function can be utilized by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">train_X</span><span class="o">=</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_X</span><span class="p">)</span>
+<span class="n">valid_X</span><span class="o">=</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">valid_X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Normalize</strong>: scale to [0,1] by subtracting minimum and dividing by range</p>
+<div class="math notranslate nohighlight">
+\[ x_{new} = \frac{x - x_{min}}{x_{max} - x_{min}} \]</div>
+<p>We can normalize our data and use imputation for any missing values in Python by using the MinMaxScaler():</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scale the data to be between 0 and 1 (default range)</span>
+<span class="n">mms</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">data_df_array</span> <span class="o">=</span> <span class="n">mms</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_df_sub</span><span class="p">)</span> <span class="c1"># results stored in a numpy array, not a dataframe. </span>
+
+<span class="c1"># IMPUTATION</span>
+<span class="c1"># initialize imputer, which uses mean substitution </span>
+<span class="c1"># does this by taking the mean of the values of the two nearest neighbors</span>
+<span class="c1"># n_neighbors: number of neighbors</span>
+<span class="c1"># weights: whether and how to weight values; we don&#39;t weight</span>
+<span class="n">imputer</span> <span class="o">=</span> <span class="n">KNNImputer</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
+
+<span class="c1"># apply the imputer function to the array</span>
+<span class="n">data_df_array</span><span class="o">=</span><span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_df_array</span><span class="p">)</span> 
+
+<span class="c1"># convert the array back into a dataframe</span>
+<span class="n">data_df_norm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_df_array</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">data_df_sub</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>What makes a good similarity metric?</p>
+<ul class="simple">
+<li><p>Symmetry: d(x,y) = d(y,x)</p></li>
+<li><p>Satisfy triangle inequality: d(x,y) &lt;= d(x,z) + d(z,y)</p></li>
+<li><p><strong>Can</strong> distinguish between different objects: if d(x,y) != 0 then x != y</p></li>
+<li><p><strong>Can’t</strong> distinguish between identical objects: if d(x,y) = 0 then x = y</p></li>
+</ul>
+</div>
+<div class="section" id="clustering-algorithm">
+<h2>Clustering Algorithm<a class="headerlink" href="#clustering-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>There are two popular algorithms for partitional clustering: k-means and k-medoids. Both aim to partition a dataset with n data objects into k clusters. This is accomplished by finding a partition of k clusters that optimizes the chosen partitioning criterion. The ideal solution to this would be finding the Global Optimum by exhaustively enumerating all partitions. For the purposes of this course, we will focus on k-means clustering.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><img alt="Similarity + Clustering Example of Centroid + Distance to Data Points" src="attachment:Similarity%20+%20Clustering%20Example%20of%20Centroid%20+%20Distance%20to%20Data%20Points.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><b>Fig. 3 - Distances between data points and a pre-determined centroid.</b></p></td>
+</tr>
+</tbody>
+</table>
+<p>In k-means clustering, we arbitrarily choose k initial cluster centroids and cluster data objects around them. Then, for the current partition, we compute new cluster centroids. Those new centroids are used to create new clusters and data objects are assigned to clusters based on the nearest new centroid. This process is repeated until there is no change to the centroids.</p>
+<p>K-Means Clustering Steps:</p>
+<ol class="simple">
+<li><p><strong>Randomly</strong> cluster objects into k number of clusters around k number of centroids</p></li>
+<li><p>For the current partition, compute new cluster centroids</p>
+<ol class="simple">
+<li><p>Centroids should be at the center (the mean value) of the cluster</p></li>
+</ol>
+</li>
+<li><p>Create new clusters, assigning each object to cluster with the nearest new centroid</p></li>
+<li><p>Repeat steps 2 and 3 until there is no change to your centroids</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><img alt="Similarity + Clustering K-means steps" src="attachment:Similarity%20+%20Clustering%20k-means%20steps.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><b>Fig. 4 - K-Means Clustering Steps</b></p></td>
+</tr>
+</tbody>
+</table>
+<p>How do we choose a value for k?</p>
+<p>We can create an elbow plot. An elbow plot showcases the distortion score for each k value. The graph will show an inflection point - an “elbow” point - at the most ideal k-value.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><img alt="Similarity + Clustering Elbow Plot" src="attachment:Similarity%20+%20Clustering%20Elbow%20Plot.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><b>Fig. 5 - Elbow Plot</b></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that we calculate average distortion scores utilizing the normalized data. In this case, distortion is the sum of mean Euclidean distances between data points and the centroids of their assigned clusters.</p>
+<p>Here is how we would go about creating an elbow plot for n = 15. This means we are looking at average distances for k = 1, 2, 3… 14, 15.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># from scipy.cluster.vq import kmeans, vq</span>
+
+<span class="c1"># Declare variables for use</span>
+<span class="n">distortions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">#How many clusters are you going to try? Specify the range </span>
+<span class="n">num_clusters</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Create a list of distortions from the kmeans function</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">num_clusters</span><span class="p">:</span>
+    <span class="n">cluster_centers</span><span class="p">,</span> <span class="n">distortion</span> <span class="o">=</span> <span class="n">kmeans</span><span class="p">(</span><span class="n">random_df_norm</span><span class="p">[[</span><span class="s1">&#39;variable_of_interest_one&#39;</span><span class="p">,</span> <span class="s1">&#39;variable_of_interest_two&#39;</span><span class="p">]],</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">distortions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distortion</span><span class="p">)</span>
+
+<span class="c1"># Create a data frame with two lists - number of clusters and distortions</span>
+<span class="n">elbow_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;num_clusters&#39;</span><span class="p">:</span> <span class="n">num_clusters</span><span class="p">,</span> <span class="s1">&#39;distortions&#39;</span><span class="p">:</span> <span class="n">distortions</span><span class="p">})</span>
+
+<span class="c1"># Create a line plot of num_clusters and distortions</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;num_clusters&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;distortions&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">elbow_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">num_clusters</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="strengths-weaknesses-of-k-means">
+<h2>Strengths + Weaknesses of k-means:<a class="headerlink" href="#strengths-weaknesses-of-k-means" title="Permalink to this headline">¶</a></h2>
+<p>The k-means method is efficient and much faster than hierarchical clustering. It is also straightforward and intuitively implementable.</p>
+<p>Some weaknesses of the k-means method are that we need to specify the value of k before running the algorithm which directly affects the final outcome. Also, this method is very sensitive to outliers. K-medoids clustering can address this (where the centroid could be a data point itself). Lastly, the k-means method is not very helpful for categorical data and only applies when a mean and centroid values are defined.</p>
+</div>
+<div class="section" id="references">
+<h2>References:<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary:<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<p><strong>Unsupervised Segmentation:</strong></p>
+<p><strong>Data pre-processing:</strong></p>
+<p><strong>Minkowski Distance:</strong></p>
+<p><strong>Euclidean Distance:</strong></p>
+<p><strong>Manhattan Distance:</strong></p>
+<p><strong>Standardize:</strong></p>
+<p><strong>Normalize:</strong></p>
+<p><strong>Global Optimum:</strong></p>
+<p><strong>K-Means Clustering:</strong></p>
+<p><strong>Elbow Plot:</strong></p>
+<p><strong>Hierarchical Clustering:</strong></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="DM2v2.html" title="previous page">Data Mining Overview (Cont.)</a>
+    <a class='right-next' id="next-link" href="EDAv2.html" title="next page">EDA and Data Visualization</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Vishal Sachdev<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
