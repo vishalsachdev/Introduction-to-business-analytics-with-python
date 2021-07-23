@@ -16,7 +16,8 @@
 #seaborn==0.10.1
 #six==1.15.0               # via cycler, python-dateutil
 
-cycler           # via matplotlib
+cycler  # via matplotlib
+dmba
 kiwisolver       # via matplotlib
 matplotlib
 numpy
@@ -26,4 +27,5 @@ python-dateutil   # via matplotlib, pandas
 pytz          # via pandas
 scipy             # via seaborn
 seaborn
+sklearn
 six              # via cycler, python-dateutil
