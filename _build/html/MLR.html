@@ -430,7 +430,7 @@ Compare models of different predictive accuracies to determine the best model</p
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dmba</span> <span class="kn">import</span> <span class="n">regressionSummary</span>
 
@@ -461,7 +461,7 @@ Mean Absolute Percentage Error (MAPE) : 17.7818
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_lm_pred</span> <span class="o">=</span> <span class="n">car_lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span> <span class="c1"># Which data set are we calculating predictions</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">car_lm_pred</span><span class="p">,</span> <span class="s1">&#39;Actual&#39;</span><span class="p">:</span> <span class="n">test_y</span><span class="p">,</span><span class="s1">&#39;Error&#39;</span><span class="p">:</span> <span class="n">test_y</span> <span class="o">-</span> <span class="n">car_lm_pred</span><span class="p">})</span>
@@ -618,7 +618,7 @@ Mean Absolute Percentage Error (MAPE) : 17.7818
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting Actual Vs Predicted</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -632,7 +632,7 @@ Mean Absolute Percentage Error (MAPE) : 17.7818
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x121b115e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x120c195e0&gt;]
 </pre></div>
 </div>
 <img alt="_images/MLR_24_1.png" src="_images/MLR_24_1.png" />
